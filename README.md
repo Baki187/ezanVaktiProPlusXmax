@@ -3,7 +3,8 @@
 Modern bir Windows system tray ezan vakti uygulaması. Bilgisayar açıldığında otomatik olarak başlar ve sistem tepsisinde (sağ alt köşe) çalışır.
 
 ## Özellikler
-
+- COK ONEMLI İLK BAŞLATTIGINIZDA "NPM START" YAPMAYI  UNUTMAYIN YOKSA HER BİLGİSAYAR ACISILINDA 
+  CALISMAZ
 - 🕌 Sistem tepsisinde (system tray) çalışır — görev çubuğunda yer kaplamaz
 - ⏱️ Sonraki namaza canlı geri sayım
 - 📋 Tüm 6 vakit (İmsak, Güneş, Öğle, İkindi, Akşam, Yatsı)

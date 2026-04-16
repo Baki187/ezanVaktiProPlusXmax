@@ -25,7 +25,7 @@
       "output": "dist"
     },
     "win": {
-      "icon": "assets/icon.ico",
+      "icon": "assets/icon.png",
       "target": [
         {
           "target": "nsis",
@@ -33,6 +33,10 @@
         },
         {
           "target": "portable",
+          "arch": ["x64"]
+        },
+        {
+          "target": "zip",
           "arch": ["x64"]
         }
       ]
