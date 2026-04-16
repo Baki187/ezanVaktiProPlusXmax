@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.aladhan.com https://worldtimeapi.org;" />
+  <title>Ezan Vakti Pro+ Xmax</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ana Ekran -->
+  <div id="app" class="app">
+
+    <!-- Başlık Barı -->
+    <div class="header">
+      <div class="header-left">
+        <div class="crescent">🌙</div>
+        <div class="header-info">
+          <span class="app-title">Ezan Vakti Pro+ Xmax</span>
+          <span class="city-name" id="cityName">Ankara</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="settingsBtn" title="Ayarlar">⚙️</button>
+        <button class="icon-btn" id="closeBtn" title="Kapat">✕</button>
+      </div>
+    </div>
+
+    <!-- Tarih Bilgisi -->
+    <div class="date-section">
+      <div class="date-miladi" id="dateMiladi">14 Nisan 2026, Salı</div>
+      <div class="date-hicri" id="dateHicri">Hicri tarih yükleniyor...</div>
+    </div>
+
+    <!-- Sonraki Vakit Geri Sayım -->
+    <div class="countdown-card">
+      <div class="next-prayer-label">Sonraki Namaz</div>
+      <div class="next-prayer-name" id="nextPrayerName">Yükleniyor...</div>
+      <div class="countdown-timer" id="countdownTimer">--:--:--</div>
+      <div class="next-prayer-time" id="nextPrayerTime"></div>
+      <div class="countdown-bar">
+        <div class="countdown-progress" id="countdownProgress"></div>
+      </div>
+    </div>
+
+    <!-- Vakit Listesi -->
+    <div class="prayers-list" id="prayersList">
+      <div class="prayer-item loading-row" data-key="Imsak">
+        <div class="prayer-icon">🌅</div>
+        <div class="prayer-details">
+          <span class="prayer-name">İmsak</span>
+        </div>
+        <div class="prayer-time">--:--</div>
+      </div>
+      <div class="prayer-item loading-row" data-key="Sunrise">
+        <div class="prayer-icon">☀️</div>
+        <div class="prayer-details">
+          <span class="prayer-name">Güneş</span>
+        </div>
+        <div class="prayer-time">--:--</div>
+      </div>
+      <div class="prayer-item loading-row" data-key="Dhuhr">
+        <div class="prayer-icon">🌤️</div>
+        <div class="prayer-details">
+          <span class="prayer-name">Öğle</span>
+        </div>
+        <div class="prayer-time">--:--</div>
+      </div>
+      <div class="prayer-item loading-row" data-key="Asr">
+        <div class="prayer-icon">🌇</div>
+        <div class="prayer-details">
+          <span class="prayer-name">İkindi</span>
+        </div>
+        <div class="prayer-time">--:--</div>
+      </div>
+      <div class="prayer-item loading-row" data-key="Maghrib">
+        <div class="prayer-icon">🌆</div>
+        <div class="prayer-details">
+          <span class="prayer-name">Akşam</span>
+        </div>
+        <div class="prayer-time">--:--</div>
+      </div>
+      <div class="prayer-item loading-row" data-key="Isha">
+        <div class="prayer-icon">🌙</div>
+        <div class="prayer-details">
+          <span class="prayer-name">Yatsı</span>
+        </div>
+        <div class="prayer-time">--:--</div>
+      </div>
+    </div>
+
+    <!-- Yükleme durumu -->
+    <div class="status-bar" id="statusBar">
+      <span id="statusText">Vakitler yükleniyor...</span>
+    </div>
+  </div>
+
+  <!-- Ayarlar Ekranı -->
+  <div id="settingsPanel" class="settings-panel hidden">
+    <div class="settings-header">
+      <button class="icon-btn back-btn" id="backBtn">←</button>
+      <span class="settings-title">Ayarlar</span>
+    </div>
+
+    <div class="settings-body">
+      <div class="settings-group">
+        <label class="settings-label">Şehir</label>
+        <input type="text" id="cityInput" class="settings-input" placeholder="Örn: Ankara" />
+      </div>
+
+      <div class="settings-group">
+        <label class="settings-label">Ülke</label>
+        <input type="text" id="countryInput" class="settings-input" placeholder="Örn: Turkey" />
+      </div>
+
+      <div class="settings-group">
+        <label class="settings-label">Hesaplama Yöntemi</label>
+        <select id="methodSelect" class="settings-input settings-select">
+          <option value="13">Diyanet İşleri Başkanlığı</option>
+          <option value="2">Müslim Dünya Birliği</option>
+          <option value="3">Umm al-Qura (Mekke)</option>
+          <option value="4">Mısır Dini Otoritesi</option>
+        </select>
+      </div>
+
+      <div class="settings-group toggle-group">
+        <div class="toggle-info">
+          <label class="settings-label">Bildirimler</label>
+          <span class="settings-sublabel">Vakit girdiğinde bildir</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notifToggle" />
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <button class="save-btn" id="saveBtn">💾 Kaydet</button>
+
+      <div class="version-info" id="versionInfo">v1.0.0</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

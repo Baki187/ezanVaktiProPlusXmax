@@ -1,0 +1,592 @@
+/* ============================================
+   Ezan Vakti Pro — Modern Dark Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0d0f14;
+  --bg-secondary: #13161f;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-hover: rgba(255, 255, 255, 0.07);
+  --bg-glass: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(196, 153, 82, 0.5);
+
+  --gold: #c49952;
+  --gold-light: #e8bc72;
+  --gold-glow: rgba(196, 153, 82, 0.2);
+
+  --text-primary: #f0ead6;
+  --text-secondary: rgba(240, 234, 214, 0.6);
+  --text-muted: rgba(240, 234, 214, 0.35);
+
+  --active-bg: linear-gradient(135deg, rgba(196, 153, 82, 0.18), rgba(196, 153, 82, 0.08));
+  --active-border: rgba(196, 153, 82, 0.45);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(196, 153, 82, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 360px;
+  height: 520px;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: transparent;
+  color: var(--text-primary);
+  user-select: none;
+  -webkit-app-region: no-drag;
+}
+
+.app {
+  width: 360px;
+  height: 520px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(255,255,255,0.03);
+  position: relative;
+}
+
+/* Üst dekoratif gradient glow */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+
+/* ============ HEADER ============ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.crescent {
+  font-size: 22px;
+  filter: drop-shadow(0 0 6px rgba(196, 153, 82, 0.5));
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(196, 153, 82, 0.5)); }
+  50% { filter: drop-shadow(0 0 12px rgba(196, 153, 82, 0.8)); }
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.3px;
+}
+
+.city-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.icon-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+  color: var(--text-primary);
+  transform: scale(1.05);
+}
+
+/* ============ DATE ============ */
+.date-section {
+  padding: 10px 16px 8px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.date-miladi {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.date-hicri {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* ============ COUNTDOWN CARD ============ */
+.countdown-card {
+  margin: 0 12px 10px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(196, 153, 82, 0.12), rgba(196, 153, 82, 0.04));
+  border: 1px solid rgba(196, 153, 82, 0.25);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.countdown-card::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(196, 153, 82, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.next-prayer-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.next-prayer-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.countdown-timer {
+  font-size: 34px;
+  font-weight: 300;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 2px;
+  text-shadow: 0 0 20px rgba(196, 153, 82, 0.3);
+}
+
+.next-prayer-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.countdown-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.countdown-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(196, 153, 82, 0.5);
+  width: 50%;
+}
+
+/* ============ PRAYERS LIST ============ */
+.prayers-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prayers-list::-webkit-scrollbar {
+  width: 4px;
+}
+.prayers-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.prayers-list::-webkit-scrollbar-thumb {
+  background: rgba(196, 153, 82, 0.3);
+  border-radius: 999px;
+}
+
+.prayer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  cursor: default;
+  position: relative;
+}
+
+.prayer-item:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border);
+}
+
+.prayer-item.active {
+  background: var(--active-bg);
+  border-color: var(--active-border);
+  box-shadow: var(--shadow-glow);
+}
+
+.prayer-item.active .prayer-name {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.prayer-item.active .prayer-time {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.prayer-item.passed {
+  opacity: 0.4;
+}
+
+.prayer-icon {
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.prayer-details {
+  flex: 1;
+}
+
+.prayer-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.prayer-time {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.active-badge {
+  font-size: 9px;
+  background: var(--gold);
+  color: #0d0f14;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.loading-row .prayer-time {
+  opacity: 0.3;
+}
+
+/* ============ STATUS BAR ============ */
+.status-bar {
+  padding: 6px 16px 10px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+#statusText {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* ============ SETTINGS PANEL ============ */
+.settings-panel {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.settings-panel.hidden {
+  display: none;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.settings-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+
+.back-btn {
+  font-size: 16px;
+}
+
+.settings-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.settings-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.settings-sublabel {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.settings-input {
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.settings-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(196, 153, 82, 0.1);
+}
+
+.settings-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c49952' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.settings-select option {
+  background: #1a1d28;
+  color: var(--text-primary);
+}
+
+/* Toggle Grubu */
+.toggle-group {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.toggle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid var(--border);
+}
+
+.toggle-slider:before {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background: var(--text-secondary);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: rgba(196, 153, 82, 0.3);
+  border-color: var(--gold);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+  background: var(--gold-light);
+}
+
+/* Kaydet Butonu */
+.save-btn {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  color: #0d0f14;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(196, 153, 82, 0.35);
+}
+
+.save-btn:active {
+  transform: translateY(0);
+}
+
+.version-info {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.prayer-item {
+  animation: fadeIn 0.3s ease both;
+}
+
+.prayer-item:nth-child(1) { animation-delay: 0.05s; }
+.prayer-item:nth-child(2) { animation-delay: 0.10s; }
+.prayer-item:nth-child(3) { animation-delay: 0.15s; }
+.prayer-item:nth-child(4) { animation-delay: 0.20s; }
+.prayer-item:nth-child(5) { animation-delay: 0.25s; }
+.prayer-item:nth-child(6) { animation-delay: 0.30s; }
+
+/* Error state */
+.error-msg {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* Save success */
+.save-success {
+  background: linear-gradient(135deg, #2d8a4e, #3ab367) !important;
+}
